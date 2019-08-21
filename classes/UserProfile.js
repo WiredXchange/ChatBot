@@ -3,13 +3,11 @@ import { StyleSheet, Text, View, Image, Button, TouchableOpacity, Alert } from '
 import ImagePicker from 'react-native-image-picker';
 
 
-//var ImagePicker = require('react-native-image-picker');
 
-
-
-export default class ChatBot extends Component
+export default class UserProfile extends Component
  {
 
+   // Title bar with title
   static navigationOptions = 
   {
 
@@ -31,6 +29,7 @@ constructor()
   super();
 
 
+  // state management
   this.state =
     { 
       name:'',
@@ -41,6 +40,7 @@ constructor()
     }
 }
 
+// Choose option from the dropdown 
 chooseFile = () => {
   var options = {
     title: 'Select Image',
@@ -75,6 +75,7 @@ chooseFile = () => {
   });
 };
 
+// Opening camera capturing screen
 launchCamera = () => {
   var options = {
     storageOptions: {
@@ -100,6 +101,7 @@ launchCamera = () => {
 };
 
 
+// Remove photo when user already have it on the profile
 removePicture = () => 
 {
   if(this.state.filePath === {} || this.state.filePath === "")
@@ -120,7 +122,7 @@ removePicture = () =>
  
 }
 
-
+// Opening Gallery to choose picture
 launchLibrary = () => {
   var options = {
     storageOptions: {
@@ -147,7 +149,7 @@ ImagePicker.launchImageLibrary(options, (response) => {
 });
 };
 
- //Call Api to get Company Information
+ //Call to get data for the profile from the previous screen
  async componentDidMount() {
   try {
     this.setState({name :this.props.navigation.state.params.Name})
@@ -226,7 +228,9 @@ ImagePicker.launchImageLibrary(options, (response) => {
         }
       }
 
-      const styles = StyleSheet.create({
+
+      // Styling of the screen/design of the screen
+const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: "center",
